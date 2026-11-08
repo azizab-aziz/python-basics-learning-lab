@@ -1,0 +1,5 @@
+print("===Developer Profile===")
+print("Name: Aziz")
+print("Track: Full-stack and AI")
+print("Current focus: Python basics")
+print("Status: Learning")
