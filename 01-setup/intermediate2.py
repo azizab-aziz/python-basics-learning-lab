@@ -1,10 +1,10 @@
-import sys 
 
 print("warehouse Management learning Lab")
 print("Topic 01 - setup")
 print("-" * 40)
 
-print("python version:", sys.version.split()[0])
+print("python is working")
+print("this is my first python script")
 print("-" * 40)
 
 print("SKU", "Product", "Location", sep=" | ")
