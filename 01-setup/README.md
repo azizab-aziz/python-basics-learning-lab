@@ -7,9 +7,11 @@ Prove Python runs on this machine and learn to run a script. Theme: the **Wareho
 | File | Level | What it is |
 |---|---|---|
 | `intermediate1.py` | Intermediate | First script: two `print()` lines confirming Python works |
-| `intermediate2.py` | Intermediate | Banner, Python version and a six-product SKU table |
+| `intermediate2.py` | Intermediate | Banner, separators and a six-product SKU table |
 | `advanced1.py` | Advanced | Developer profile card printed with `print()` |
-| `advanced2.py` | Advanced | Environment check: version rule, OS, script folder, OneDrive warning, exit code |
+| `advanced2.py` | Advanced | Profile card, Python version and a lab progress list |
+
+The number is the order each version was built: 1 is the simpler version of the level, 2 is the fuller one.
 
 ## Choosing how to run a script
 
@@ -22,49 +24,45 @@ Prove Python runs on this machine and learn to run a script. Theme: the **Wareho
 
 ## Intermediate version: first scripts
 
-**Goal:** run a script, read its output, and print structured text.
+**Goal:** run a script and print organized text.
 
 - `intermediate1.py`: `print()` with text between quotes, two lines of output
 - `intermediate2.py`:
-  - `import sys` to read the Python version with `sys.version.split()[0]`
-  - `print()` with several values separated by commas
-  - `sep=" | "` to build table rows
-  - `"-" * 40` to draw separator lines
+  - `print("-" * 40)` draws a separator line
+  - `print("SKU", "Product", sep=" | ")` joins several values into one table row
   - the first rows of the shared dataset (LAP-001 to PRT-001, locations A-01 to A-06)
 
-## Advanced version: profile card and environment check
+## Advanced version: profile card
 
-**Goal:** show a simple output script, then a script that checks the environment and fails clearly when it is wrong.
+**Goal:** print a structured profile, then read information from Python itself.
 
-- `advanced1.py`: a "Developer Profile" card (name, track, current focus, status) printed with `print()`
+- `advanced1.py`: a "Developer Profile" card (name, track, current focus, status) made of several `print()` lines
 - `advanced2.py`:
-  - constants `MIN_PYTHON` and `LINE`
-  - small functions with type hints (`python_is_recent_enough`, `build_rows`, `print_report`) and a `main()` that returns an exit code
-  - `platform` and `pathlib.Path` to report the OS and the script's real folder
-  - a OneDrive warning, because the repo lives inside OneDrive
-  - f-string alignment (`{label:<{width}}`) for a neat report
-  - `if __name__ == "__main__":` and `sys.exit(main())`
+  - `import sys` and `sys.version.split()[0]` read the Python version
+  - `"\n"` inside text starts a new line, so a blank line separates sections
+  - `end=" "` keeps the next `print()` on the same line
+  - `"=" * 40` draws a header border
+  - status written as words (`[done]`, `[next]`), never by symbol alone
 
 ## What improved from intermediate to advanced
 
-- **Checks, not just prints:** `advanced2.py` decides READY or FAILED instead of always printing the same text.
-- **Exit codes:** other tools can tell success (0) from failure (1).
-- **Real values:** the script reads the version, OS and folder from the machine, not from fixed text.
-- **Structure:** small functions and constants replace one long list of `print()` lines.
-- **Status in words:** "OK", "TOO OLD", "WARNING".
+- **Structure:** the profile card groups information under a heading, where the first scripts printed single lines.
+- **Information from Python:** `advanced2.py` reads the version from the machine instead of typing it.
+- **Layout control:** `\n` and `end=` shape the output without extra `print()` lines.
+
+## What improved from version 1 to version 2
+
+- **Intermediate:** from two lines to a banner, separators and a data table.
+- **Advanced:** from a fixed card to a card with sections, a live version line and a progress list.
 
 ## What I learned
 
-- A script runs from the terminal with `python filename.py`, and `print()` is the first way to see results.
-- `sep=` and `"-" * 40` build table-like output without any library.
-- A function can return a value (`main()` returns 0 or 1) and the terminal can read it as an exit code.
+- A script runs from the terminal with `python filename.py`.
+- `sep=`, `end=` and `"-" * 40` give control over how output looks.
 - Mistakes that happened: running `git init` in my home folder instead of the project folder, a typo in a file name (`intermedite2.py`), and a GitHub repo name that did not match my local remote.
 
 ## Known issues / next improvements
 
-- [ ] `intermediate2.py`: `Mon-001` should be `MON-001` and `laptop` should be `Laptop`, to match the shared dataset.
-- [ ] `intermediate2.py`: the banner and last line start with lowercase words, unlike the rest of the lab.
-- [ ] `advanced1.py` uses only `print()`, the same skill as intermediate; rework it after topic 02 with variables.
-- [ ] `advanced2.py`: the docstring says `python advanced.py`, but the file is named `advanced2.py`.
-- [ ] Confirm whether `python` or `py` works on this machine.
-- [ ] Select the Python interpreter in VS Code.
+- [ ] Confirm whether `python` or `py` works on this machine
+- [ ] Select the Python interpreter in VS Code
+- [ ] Rebuild the environment check with functions after topic 08
